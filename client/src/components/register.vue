@@ -16,9 +16,9 @@
     <br>
     <div class = "error" v-html = "error"/>
     <br>
-    <button @click="register">
+    <v-btn @click="register">
       Register
-    </button>
+    </v-btn>
   </div>
 </template>
 
