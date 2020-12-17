@@ -2,7 +2,7 @@
   <div>
     <b-container>
       <h1 class="title pb-3 pt-3">
-        <strong> Register </strong>
+        <strong> Login </strong>
       </h1>
       <div>
         <b-row align-h="center">
@@ -34,8 +34,8 @@
           <br />
           <div class="error" v-html="error" />
           <br />
-          <b-button class="shadow rounded" pill variant="dark" @click="register">
-            Register
+          <b-button class="shadow rounded" pill variant="dark" @click="login">
+            Login
           </b-button>
       </div>
     </b-container>
@@ -54,9 +54,9 @@ export default {
     };
   },
   methods: {
-    async register() {
+    async login() {
       try {
-        await authenticationService.register({
+        await authenticationService.login({
           email: this.email,
           password: this.password,
         });
