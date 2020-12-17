@@ -1,9 +1,9 @@
 <template>
   <div>
     <b-navbar toggleable="lg" type="dark" variant="dark">
-        <router-link to="HelloWorld">
+      <router-link to="HelloWorld">
         <b-navbar-brand>Dream Journal</b-navbar-brand>
-        </router-link>
+      </router-link>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
@@ -30,6 +30,7 @@
           </b-nav-form>
           <router-link to="login">
             <b-button
+              v-if="!$store.state.isUserLoggedIn"
               size="sm"
               class="shadow rounded my-2 my-sm-0 mr-2"
               pill
@@ -40,12 +41,24 @@
           </router-link>
           <router-link to="register">
             <b-button
+              v-if="!$store.state.isUserLoggedIn"
               size="sm"
               class="shadow rounded"
               pill
               variant="info"
             >
               Register
+            </b-button>
+          </router-link>
+          <router-link to="HelloWorld">
+            <b-button
+              v-if="$store.state.isUserLoggedIn"
+              size="sm"
+              class="shadow rounded"
+              pill
+              variant="info"
+            >
+              Signout
             </b-button>
           </router-link>
         </b-navbar-nav>
@@ -55,7 +68,15 @@
 </template>
 
 <script>
-export default {}
+export default {
+  /* eslint-disable */
+  methods: {
+    async signout() {
+       this.$store.dispatch("setToken", response.data.token);
+        this.$store.dispatch("setUser", response.data.token);
+    },
+  },
+};
 </script>
 
 <style scoped>

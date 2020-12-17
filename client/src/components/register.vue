@@ -56,10 +56,12 @@ export default {
   methods: {
     async register() {
       try {
-        await authenticationService.register({
+        response = await authenticationService.register({
           email: this.email,
           password: this.password,
         });
+        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.token)
       } catch (error) {
         this.error = error.response.data.error;
       }

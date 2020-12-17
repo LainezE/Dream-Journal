@@ -4,7 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
-
+import {sync} from 'vuex-router-sync'
+import store from '@/store/store.js'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
@@ -13,10 +14,12 @@ Vue.use(BootstrapVueIcons)
 
 Vue.config.productionTip = false
 
-/* eslint-disable no-new */
+sync(store, router)
+/* eslint-disable */
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
