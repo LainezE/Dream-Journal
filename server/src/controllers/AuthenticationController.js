@@ -18,12 +18,9 @@ function registerHashPassword (password) {
 module.exports = {
     async register(req, res) {
         try {
-            console.log("ORIGINAL PASSWORD: " + req.body.password)
             req.body.password = await registerHashPassword(req.body.password)
-            console.log("HASHED PASSWORD: " + req.body.password)
             const user = await User.create(req.body)
             const userJSON = user.toJSON()
-            console.log(user.password)
             res.send({
                 user: userJSON,
                 token: jwtSignUser(userJSON)
@@ -47,9 +44,7 @@ module.exports = {
                     error: 'Login Info was incorrect'
                 })
             }
-            console.log("BEFORE ISPASSWORDVALID")
             const isPasswordValid = await user.comparePassword(password)
-            console.log('After Comparison function')
             if (!isPasswordValid) {
                 return res.status(403).send({
                     error: 'Login Info was incorrect' + isPasswordValid
