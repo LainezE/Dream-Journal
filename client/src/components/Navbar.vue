@@ -9,6 +9,28 @@
       <b-collapse id="nav-collapse" is-nav>
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
+          <router-link to="DreamJournal">
+            <b-button
+              v-if="$store.state.isUserLoggedIn"
+              size="sm"
+              class="shadow rounded my-2 my-sm-0 mr-2"
+              pill
+              variant="info"
+            >
+              Dreams
+            </b-button>
+          </router-link>
+          <router-link to="CreateDream">
+            <b-button
+              v-if="$store.state.isUserLoggedIn"
+              size="sm"
+              class="shadow rounded my-2 my-sm-0 mr-2"
+              pill
+              variant="info"
+            >
+              Create Dream
+            </b-button>
+          </router-link>
           <b-nav-form>
             <b-form-input
               size="sm"

@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import register from '@/components/register'
 import Login from '@/components/Login'
 import DreamJournal from '@/components/DreamJournal'
+import CreateDream from '@/components/CreateDream'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/DreamJournal',
       name: 'DreamJournal',
       component: DreamJournal
+    },
+    {
+      path: '/CreateDream',
+      name: 'CreateDream',
+      component: CreateDream
     }
   ]
 })

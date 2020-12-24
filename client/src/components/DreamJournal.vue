@@ -1,34 +1,100 @@
 <template>
   <div>
     <b-container>
-        <h1 class="py-3">Dreams</h1>
-      <b-table class="py-3" striped hover :items="items"></b-table>
+      <h1 class="py-3">Dreams</h1>
+      <b-table
+        sticky-header
+        class="py-3"
+        striped
+        hover
+        :items="dreams"
+        :fields="fields"
+      >
+        <template #cell(#)="row">
+          <b-button
+            v-b-modal.modal-lg
+            size="sm"
+            @click="info(row.item.body, row.item.title, $event.target)"
+            class="mr-2"
+          >
+            Details
+          </b-button>
+        </template>
+      </b-table>
+      <b-modal
+        header-bg-variant-secondary
+        class="overflow-auto"
+        :id="infoModal.id"
+        scrollable
+        :title="infoModal.title"
+        ok-only
+        @hide="resetInfoModal"
+      >
+        <b-container class="">
+          <p>
+            {{ infoModal.content }}
+          </p>
+        </b-container>
+      </b-modal>
     </b-container>
   </div>
 </template>
 
 <script>
 /* eslint-disable */
-import DreamJournalService from '@/services/DreamJournalService'
+import DreamJournalService from "@/services/DreamJournalService";
 export default {
   data() {
     return {
-      dreams: [
-        { age: 40, first_name: "Dickerson", last_name: "Macdonald" },
-        { age: 21, first_name: "Larsen", last_name: "Shaw" },
-        { age: 89, first_name: "Geneva", last_name: "Wilson" },
-        { age: 38, first_name: "Jami", last_name: "Carney" },
+      fields: [
+        {
+          key: "id",
+          label: "index",
+          sortable: true,
+        },
+        {
+          key: "title",
+          label: "title",
+          sortable: false,
+        },
+        {
+          key: "createdAt",
+          label: "date",
+          sortable: true,
+        },
+        {
+          key: "#",
+          label: "more info",
+          sortable: false,
+        },
       ],
+      dreams: [],
+      infoModal: {
+        id: "modal-lg",
+        title: "",
+        content: "",
+      },
     };
   },
   methods: {
-      getDreams() {
-
-      }
+    info(item, title, button) {
+      this.infoModal.title = title;
+      this.infoModal.content = item;
+      //JSON.stringify(item, null, 2);
+      this.$root.$emit("bv::show::modal", this.infoModal.id, button);
+    },
+    resetInfoModal() {
+      this.infoModal.title = "";
+      this.infoModal.content = "";
+    },
   },
-  async mounted () {
-      this.dreams = await DreamJournalService.index()
-  }
+  async mounted() {
+    try {
+      this.dreams = (await DreamJournalService.getDreams()).data;
+    } catch (error) {
+      console.log("Something went wrong trying to fetch your dreams");
+    }
+  },
 };
 </script>
 
