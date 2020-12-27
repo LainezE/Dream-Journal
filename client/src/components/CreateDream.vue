@@ -28,7 +28,7 @@
                 name="date"
                 required
               />
-               <p>Date: '{{ date }}'</p>
+              <p>Date: '{{ date }}'</p>
             </b-col>
           </b-row>
         </b-form-group>
@@ -67,21 +67,21 @@ export default {
     return {
       title: "",
       body: "",
-      date: "",
+      date: null,
       lucidity: "",
       error: null,
     };
   },
   methods: {
-    async submit() {
+    submit() {
       try {
-        response = await DreamJournalService.createDream({
+        response = DreamJournalService.createDream({
           title: this.title,
           body: this.body,
           date: this.date,
           lucidity: this.lucidity,
         });
-
+        this.$route._router.go('/DreamJournal')
       } catch (error) {
         this.error = error.response.data.error;
       }
