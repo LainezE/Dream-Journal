@@ -13,6 +13,6 @@ module.exports = (app) => {
             message: `hello ${req.body.email}, User was registered`
         })
     })
-    app.get('/dreams', DreamJournalController.getDreams),
+    app.get('/dreams/:userID', DreamJournalController.getDreams),
     app.post('/dreams', DreamJournalController.createDreams)
 }

@@ -4,7 +4,15 @@ module.exports = (sequelize, DataTypes) => {
         title: DataTypes.STRING,
         body: DataTypes.TEXT,
         lucidity: DataTypes.INTEGER,
-        date: DataTypes.DATEONLY
+        date: DataTypes.DATEONLY,
+        userID:{
+            type: DataTypes.INTEGER, 
+            //This is a foreign key to create a one to many relationship
+            references: {
+                model: 'user',
+                key: 'id'
+            }
+        }
     })
     return Dream
 };
