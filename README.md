@@ -1,6 +1,15 @@
 Dream Journal
 A Vue.js / Express.js web application for keeping track of your dreams
 
+Frameworks/Modules that I learned/improved at: 
+
+Vue.js
+Express.js 
+Sequelize
+Bcrypt 
+Boostrap Vue
+Axios
+
 Setup
 You need to have Node Js installed
 
