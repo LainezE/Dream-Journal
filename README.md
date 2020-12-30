@@ -1,5 +1,5 @@
 Dream Journal
-A Vue.js / Express.js web application for keeping track of your dreams
+A Vue.js / Express.js web application with a Model-View-Controller (MVC) design pattern designed to keep track of your dreams
 
 Frameworks/Modules that I learned/improved at: 
 
