@@ -1,2 +1,14 @@
-# Dream-Journal
-A Web Application that will record your dreams
+Dream Journal
+A Vue.js / Express.js web application for keeping track of your dreams
+
+Setup
+You need to have Node Js installed: https://nodejs.org/en/
+
+Client - Terminal A
+cd client
+npm install
+npm start
+Server - Terminal B
+cd server
+npm install
+npm start
