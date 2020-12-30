@@ -50,14 +50,14 @@ export default {
     return {
       fields: [
         {
-          key: "id",
-          label: "index",
-          sortable: true,
-        },
-        {
           key: "title",
           label: "title",
           sortable: false,
+        },
+        {
+          key: "lucidity",
+          label: "Lucidity",
+          sortable: true,
         },
         {
           key: "createdAt",

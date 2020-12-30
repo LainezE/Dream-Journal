@@ -31,7 +31,7 @@
               Create Dream
             </b-button>
           </router-link>
-          <b-nav-form>
+          <!-- <b-nav-form>
             <b-form-input
               size="sm"
               class="mr-sm-2"
@@ -46,7 +46,7 @@
                 >Search
               </b-button>
             </router-link>
-          </b-nav-form>
+          </b-nav-form> -->
           <router-link to="login">
             <b-button
               v-if="!$store.state.isUserLoggedIn"
