@@ -13,4 +13,4 @@ npm start
 Server - Terminal B ->
 cd server ->
 npm install ->
-npm start ->
+npm start
