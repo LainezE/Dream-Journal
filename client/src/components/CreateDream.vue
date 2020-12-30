@@ -4,6 +4,9 @@
       <h1 class="title pb-3 pt-3">
         <strong> Write Your Dream </strong>
       </h1>
+      <b-alert v-model="showDismissibleAlert" variant="success" dismissible>
+        Dream Created!
+      </b-alert>
       <div>
         <b-form-group>
           <b-row align-h="center">
@@ -62,6 +65,8 @@
 /* eslint-disable */
 import authenticationService from "@/services/authenticationService";
 import DreamJournalService from "@/services/DreamJournalService";
+import store from "@/store/store.js";
+import router from "vue-router";
 export default {
   data() {
     return {
@@ -70,20 +75,25 @@ export default {
       date: null,
       lucidity: "",
       error: null,
+      userID: store.getters.getUserID,
+      showDismissibleAlert: false,
     };
   },
   methods: {
     submit() {
       try {
-        response = DreamJournalService.createDream({
+        console.log(store.getters.getUserID);
+        const response = DreamJournalService.createDream({
           title: this.title,
           body: this.body,
           date: this.date,
           lucidity: this.lucidity,
+          userID: store.getters.getUserID,
         });
-        this.$route._router.go('/DreamJournal')
+        this.showDismissibleAlert = true;
+        //this.$router.push("/DreamJournal");
       } catch (error) {
-        this.error = error.response.data.error;
+        console.log(response);
       }
     },
   },

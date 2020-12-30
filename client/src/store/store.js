@@ -14,7 +14,7 @@ export default new Vuex.Store({
     mutations: {
         setToken(state, token) {
             state.token = token
-            if(token){
+            if (token) {
                 state.isUserLoggedIn = true
             } else {
                 state.isUserLoggedIn = false
@@ -31,5 +31,14 @@ export default new Vuex.Store({
         setUser({ commit }, user) {
             commit('setUser', user)
         }
+    },
+    getters: {
+        getUserID: (state, getters) => {
+            try {
+                return state.user.id
+            } catch (error) {
+                console.log(error)
+            }
+        },
     }
 })

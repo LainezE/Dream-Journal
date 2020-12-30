@@ -88,15 +88,14 @@
 </template>
 
 <script>
+/* eslint-disable */
+import router from "vue-router";
 export default {
-  /* eslint-disable */
   methods: {
     async logout() {
       this.$store.dispatch("setToken", null);
       this.$store.dispatch("setUser", null);
-      this.router.push({
-        name: "root",
-      });
+      this.$router.push("login");
     },
   },
 };

@@ -43,6 +43,8 @@
 <script>
 /* eslint-disable */
 import DreamJournalService from "@/services/DreamJournalService";
+import store from "@/store/store.js"
+import router from 'vue-router'
 export default {
   data() {
     return {
@@ -90,9 +92,10 @@ export default {
   },
   async mounted() {
     try {
-      this.dreams = (await DreamJournalService.getDreams()).data;
+      console.log(store.getters.getUser)
+      this.dreams = (await DreamJournalService.getDreams(store.getters.getUserID)).data;
     } catch (error) {
-      console.log("Something went wrong trying to fetch your dreams");
+      console.log("Something went wrong trying to fetch your dreams: " + error);
     }
   },
 };

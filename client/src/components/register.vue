@@ -45,6 +45,7 @@
 <script>
 /* eslint-disable */
 import authenticationService from "@/services/authenticationService";
+import router from "vue-router";
 export default {
   data() {
     return {
@@ -56,14 +57,15 @@ export default {
   methods: {
     async register() {
       try {
-        response = await authenticationService.register({
+        const response = await authenticationService.register({
           email: this.email,
           password: this.password,
         });
         this.$store.dispatch('setToken', response.data.token)
         this.$store.dispatch('setUser', response.data.token)
+        this.$router.push("/DreamJournal");
       } catch (error) {
-        this.error = error.response.data.error;
+        console.log(error)//this.error = error.response.data.error;
       }
     },
   },

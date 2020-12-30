@@ -23,5 +23,13 @@ module.exports = {
         } catch (error) {
             error: "No Dreams Found"
         }
+    },
+    async getAllDreams(req, res) {
+        try {
+            const dreams = await Dream.findAll()
+            res.send(dreams)
+        } catch (error) {
+            error: "No Dreams Found"
+        }
     }
 }

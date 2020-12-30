@@ -2,8 +2,8 @@
 import api from '@/services/api'
 
 export default {
-    getDreams () {
-        return api().get('dreams')
+    getDreams (userID) {
+        return api().get(`dreams/${userID}`)
     },
     createDream(dream){
         return api().post('dreams', dream)

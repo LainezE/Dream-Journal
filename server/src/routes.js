@@ -14,5 +14,7 @@ module.exports = (app) => {
         })
     })
     app.get('/dreams/:userID', DreamJournalController.getDreams),
-    app.post('/dreams', DreamJournalController.createDreams)
+    app.post('/dreams', DreamJournalController.createDreams),
+    app.get('/users', AuthenticationController.getUsers),
+    app.get('/dreams', DreamJournalController.getAllDreams)
 }
