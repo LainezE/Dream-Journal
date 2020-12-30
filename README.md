@@ -2,7 +2,7 @@ Dream Journal
 A Vue.js / Express.js web application for keeping track of your dreams
 
 Setup
-You need to have Node Js installed: https://nodejs.org/en/
+You need to have Node Js installed
 
 Client - Terminal A ->
 cd client ->
